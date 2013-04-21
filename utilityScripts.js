@@ -161,3 +161,32 @@ function makeHTMLFromJSON(jsonReply, query)
     // May be DESCRIBE TYPE etc ie/ the Schema Queries. Only do JSON for now.
     return "<p>Cannot Display HTML for this Response Type. Select JSON</p>";
 }
+
+function makeAppointmentType(jsonReply) {
+    var json = toJSON(jsonReply);
+
+    var resultDiv = $("#resultDivContainer");
+
+    $.ajax({
+        url: "http://localhost:3000/test1",
+        type: "POST",
+        data: json,
+        dataType: "json",
+        success: function (result) {
+            switch (result) {
+                case true:
+                    alert("case true, success");
+                    processResponse(result);
+                    break;
+                default:
+                    alert("case default, success");
+                    resultDiv.html(result);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("error happened")
+            alert(xhr.status);
+            alert(thrownError);
+        }
+    });
+}

@@ -299,8 +299,7 @@ JSONTest = function() {
 <![endif]-->
 </div> 
 <div id="intro">
-<p>Query a live VistA!!!!!!!!</p>
-<p>Help? <a href="mailto:contact@caregraf.com">Caregraf Support</a></p>
+<p>Create Appointment Type</p>
 </div>
 </div> 
 
@@ -310,7 +309,7 @@ JSONTest = function() {
     <div class="option">
     <span class="option-title">Query: </span> 
     <select id="query_choice" name="query_choice" onchange="if (this.selectedIndex == 0) return; boxQuery(this.options[this.selectedIndex].getAttribute('value1'));">
-    <option>Pick a Canned Query</option>
+    <option>Enter a new Appointment Type</option>
     </select>
     </div>
     <div class="option"> 
@@ -320,10 +319,10 @@ JSONTest = function() {
     <option value="json">JSON</option> 
     </select> 
     </div> 
-    <input type="button" value="Send Query" onclick="handleSendQuery()" /> 
     </div>
 </form> 
 
+<!--
 <form id="test1-form" name="test1-form" action="http://localhost.com:3000/test1" enctype="application/x-www-form-urlencoded" method="post">
     <textarea id="query" name="query" rows="5" cols="20">Posting test here</textarea>        
     <div class="options">     
@@ -336,12 +335,8 @@ JSONTest = function() {
     <input type="button" value="Send Query" onclick="handleSendQuery()" /> 
     </div>
 </form> 
+-->
 
-<div id="resultDivContainer"></div>
-<button type="button" onclick="JSONTest()">JSON</button>
-
-<div id="results">
-</div>
 
 <div id="queryAppointmentTypesButton"></div>
 <button type="button" onclick="handleSendAppointmentTypeQuery()">Get Current Appointment Types</button>
@@ -352,13 +347,6 @@ JSONTest = function() {
 
 <div id="results">
 </div>
-
-<div id="footer">A slice of <a href="http://www.caregraf.org/semanticvista">VistA Goodness</a>&trade; (c) 2011 <span id="flogo"><a href="http://www.caregraf.com">Caregraf</a></span></div>
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
 
 </body>
 </html>

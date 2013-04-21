@@ -8,6 +8,8 @@
 	JSONTest = function() {
 	    var resultDiv = $("#resultDivContainer");
 
+	    var apptCategory = $('#appt-category-form').serialize();
+
 	    $.ajax({
 	        url: "http://localhost:3000/test1",
 	        type: "POST",
@@ -38,33 +40,84 @@
 	<h1>Create Appointment Type</h1>
 	<div id="queryAppointmentTypesButton"></div>
 	<button type="button" onclick="handleSendAppointmentTypeQuery()">Get Current Appointment Types</button>
+	<form id="fmql-form" name="fmql-form" action="?" enctype="application/x-www-form-urlencoded" method="get">
+	<div class="options">
+		<div class="option">
+		    <select id="output" name="output">
+			    <option value="html" selected="selected">HTML</option> 
+		    </select> 
+		</div>
+	</div>
+	</form>
+	<!--
+	<select id="output" name="output">
 
+	<form id="apptType-form" name="apptType-form" action="submit">
+	    <textarea id="newApptType-text" name="newApptType-text" rows="5" cols="30"></textarea>        
+	    <select id="query_choice" name="query_choice" onchange="if (this.selectedIndex == 0) return; boxQuery(this.options[this.selectedIndex].getAttribute('value1'));">
+    	<select id="output" name="output">
+	    <option value="html" selected="selected">HTML</option> 
+	    <option value="json">JSON</option> 
+	    </select> 
 
+	</form>
+-->
+<!--
 	<div id="resultDivContainer"></div>
-	<button type="button" onclick="JSONTest()">JSON</button>
+	<button type="button" onclick="JSONTest()">Create Appointment Type</button>
 
 	<div id="results">
 	</div>
-
+-->
+<!--
+	<div id="results">
+	</div>
 
 	<form id="fmql-form" name="fmql-form" action="?" enctype="application/x-www-form-urlencoded" method="get">
-	    <textarea id="query" name="query" rows="5" cols="10">Enter a query or pick a canned query and then hit send!</textarea>        
+	    <textarea id="query" name="query" rows="5" cols="10">Enter a new Appointment Type Category</textarea>        
 	    <div class="options">     
 	    <div class="option">
 	    <span class="option-title">Query: </span> 
-	    <select id="query_choice" name="query_choice" onchange="if (this.selectedIndex == 0) return; boxQuery(this.options[this.selectedIndex].getAttribute('value1'));">
-	    <option>Pick a Canned Query</option>
 	    </select>
 	    </div>
 	    <div class="option"> 
 	    <span class="option-title">Output: </span> 
-	    <select id="output" name="output">
-	    <option value="html" selected="selected">HTML</option> 
-	    <option value="json">JSON</option> 
-	    </select> 
 	    </div> 
 	    <input type="button" value="Send Query" onclick="handleSendQuery()" /> 
 	    </div>
 	</form> 
+<div id="results">
+</div>
+-->
+
+<form id="fmql-form" name="fmql-form" action="?" enctype="application/x-www-form-urlencoded" method="get">
+<textarea id="query" name="query" rows="5" cols="30"></textarea>        
+<div class="options">     
+<div class="option">
+<span class="option-title">New Appointment Category</span> 
+<select id="query_choice" name="query_choice" onchange="if (this.selectedIndex == 0) return; boxQuery(this.options[this.selectedIndex].getAttribute('value1'));">
+<option>Enter a new Appointment Category</option>
+</select>
+</div>
+<div class="option"> 
+<span class="option-title">Output: </span> 
+<select id="output" name="output">
+<option value="html" selected="selected">HTML</option> 
+<option value="json">JSON</option> 
+</select> 
+</div> 
+<input type="button" value="Send Query" onclick="handleSendQuery()" /> 
+</div>
+</form> 
+
+<div id="results">
+</div>
+
+
+<form id="appt-category-form" name="appt-category-form">
+	<textarea>This is appt category form</textarea>
+	<input name="description" value="testing descriptions category">
+</form>
+
 </body>
 </html>
