@@ -1,0 +1,70 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="utilityScripts.js"></script>
+<script type="text/javascript" src="fmQMCannedQueries.js"></script>
+<script type="text/javascript" src="fmUtils.js"></script>
+<script type="text/javascript">
+	JSONTest = function() {
+	    var resultDiv = $("#resultDivContainer");
+
+	    $.ajax({
+	        url: "http://localhost:3000/test1",
+	        type: "POST",
+	        data: { name: "testName", description: "testDesc" },
+	        dataType: "json",
+	        success: function (result) {
+	            switch (result) {
+	                case true:
+	                	alert("case true, success");
+	                    processResponse(result);
+	                    break;
+	                default:
+	                	alert("case default, success");
+	                    resultDiv.html(result);
+	            }
+	        },
+	        error: function (xhr, ajaxOptions, thrownError) {
+	        	alert("error happened")
+	            alert(xhr.status);
+	            alert(thrownError);
+	        }
+	    });
+	};
+</script>
+</head>
+
+<body onload="processLoad()">
+	<h1>Create Appointment Type</h1>
+	<div id="queryAppointmentTypesButton"></div>
+	<button type="button" onclick="handleSendAppointmentTypeQuery()">Get Current Appointment Types</button>
+
+
+	<div id="resultDivContainer"></div>
+	<button type="button" onclick="JSONTest()">JSON</button>
+
+	<div id="results">
+	</div>
+
+
+	<form id="fmql-form" name="fmql-form" action="?" enctype="application/x-www-form-urlencoded" method="get">
+	    <textarea id="query" name="query" rows="5" cols="10">Enter a query or pick a canned query and then hit send!</textarea>        
+	    <div class="options">     
+	    <div class="option">
+	    <span class="option-title">Query: </span> 
+	    <select id="query_choice" name="query_choice" onchange="if (this.selectedIndex == 0) return; boxQuery(this.options[this.selectedIndex].getAttribute('value1'));">
+	    <option>Pick a Canned Query</option>
+	    </select>
+	    </div>
+	    <div class="option"> 
+	    <span class="option-title">Output: </span> 
+	    <select id="output" name="output">
+	    <option value="html" selected="selected">HTML</option> 
+	    <option value="json">JSON</option> 
+	    </select> 
+	    </div> 
+	    <input type="button" value="Send Query" onclick="handleSendQuery()" /> 
+	    </div>
+	</form> 
+</body>
+</html>
